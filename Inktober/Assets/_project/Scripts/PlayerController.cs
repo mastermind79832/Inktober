@@ -1,14 +1,24 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
+{ 
+
+	private static PlayerController instance;
+	public static PlayerController Instance { get { return instance; } }	
 
     private Vector2 m_Direction;
 	public Rigidbody2D Rigidbody2D;
 	public float Speed;
 
-	public GameObject Journal;
+	public InventorySystem InventorySystem;
+
+	private void Awake()
+	{
+		if (instance == null)
+			instance = this;
+		else
+			Destroy(this);	
+	}
 
 	private void Start()
 	{
@@ -19,23 +29,14 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		Movement();
-		SetJournal();
-	}
-
-	private void SetJournal()
-	{
-		if (Input.GetKeyDown(KeyCode.J))
-		{
-			Journal.SetActive(!Journal.activeSelf);
-		}
 	}
 
 	private void Movement()
 	{
 		m_Direction = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
 
-		if (m_Direction == Vector2.zero)
-			return;
+		//if (m_Direction == Vector2.zero)
+			//return;
 		Rigidbody2D.linearVelocity = m_Direction * Speed;
 	}
 }
