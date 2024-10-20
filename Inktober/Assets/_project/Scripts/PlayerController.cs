@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,11 @@ public class PlayerController : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 
 	public float Speed;
+	public bool IsActionBlocked;
+
+	public float atk1Time;
+	public float atk2Time;
+	public float atk3Time;
 
 	public InventorySystem InventorySystem;
 
@@ -38,14 +44,37 @@ public class PlayerController : MonoBehaviour
 
 	private void Attack()
 	{
-		throw new NotImplementedException();
+		if (Input.GetKeyDown(KeyCode.K))
+		{
+			anim.SetTrigger("Atk1");
+			BlockAction(atk1Time);
+		}
+
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			anim.SetTrigger("Atk2");
+			BlockAction(atk2Time);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Semicolon))
+		{
+			anim.SetTrigger("Atk3");
+			BlockAction(atk3Time);
+		}
 	}
 
 	private void Movement()
 	{
-		m_Direction = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
+		if (!IsActionBlocked)
+		{
+			m_Direction = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
+		}
+		else
+		{
+			m_Direction = Vector2.zero;
+		}
+			Rigidbody2D.linearVelocity = m_Direction * Speed;
 
-		Rigidbody2D.linearVelocity = m_Direction * Speed;
 		SetAnimation();
 	}
 
@@ -68,7 +97,18 @@ public class PlayerController : MonoBehaviour
 
 			anim.SetBool("IsRunning", true);
 		}
-
-		
+	
     }
+
+	private void BlockAction(float amt)
+	{
+		StartCoroutine(BlockActionRoutine(amt));
+	}
+
+	IEnumerator BlockActionRoutine(float amt)
+	{
+		IsActionBlocked = true;
+		yield return new WaitForSeconds(amt);
+		IsActionBlocked = false;
+	}
 }

@@ -1,37 +1,25 @@
 fileFormatVersion: 2
-guid: 43ace77f49d90f248a39e49da33ccdfa
+guid: 06efc966da68ee64db6540a772e115c9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6937817954938267909
-    second: 2_0
+      213: 4357200166959093950
+    second: inkies sprites_0
   - first:
-      213: 3191122964850554743
-    second: 2_1
+      213: 1282770900526691713
+    second: inkies sprites_1
   - first:
-      213: 5382512944479897801
-    second: 2_2
+      213: 1234182531783424305
+    second: inkies sprites_2
   - first:
-      213: -5515383189529662604
-    second: 2_3
+      213: 3284691826045422604
+    second: inkies sprites_3
   - first:
-      213: -3926759211464601419
-    second: 2_4
+      213: 5553620734185733819
+    second: inkies sprites_4
   - first:
-      213: -4424780041397978121
-    second: 2_5
-  - first:
-      213: 8817454751965551104
-    second: 2_6
-  - first:
-      213: 3974921216390489406
-    second: 2_7
-  - first:
-      213: -779157609879621035
-    second: 2_8
-  - first:
-      213: -5883455936764719873
-    second: 2_9
+      213: -4891711779688625467
+    second: inkies sprites_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,221 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2_0
+      name: inkies sprites_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 567
-        height: 697
+        y: 516
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5092c600ca4184060800000000000000
-      internalID: 6937817954938267909
+      spriteID: e184c6496246f034d9b8ca7911997587
+      internalID: -641662200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_1
+      name: inkies sprites_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 301
-        width: 9
-        height: 8
+        x: 512
+        y: 516
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7773282ed65294c20800000000000000
-      internalID: 3191122964850554743
+      spriteID: 251458e27da4e10428327ad88bec63d6
+      internalID: -741832153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_2
+      name: inkies sprites_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 259
-        width: 12
-        height: 28
+        x: 1024
+        y: 516
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9c88aa6510782ba40800000000000000
-      internalID: 5382512944479897801
+      spriteID: a797e841f5f55a64b9337effa3d403ee
+      internalID: 1623806544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_3
+      name: inkies sprites_3
       rect:
         serializedVersion: 2
-        x: 36
-        y: 286
-        width: 8
-        height: 8
+        x: 0
+        y: 4
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 47b6cebf53c6573b0800000000000000
-      internalID: -5515383189529662604
+      spriteID: 0a5bf55f5fe4ac84d9b09848395af28a
+      internalID: 447141839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_4
+      name: inkies sprites_4
       rect:
         serializedVersion: 2
-        x: 25
-        y: 230
-        width: 9
-        height: 19
+        x: 512
+        y: 4
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5b0d8225d495189c0800000000000000
-      internalID: -3926759211464601419
+      spriteID: be7e922eb6c44f641b0366ef1dcef2c5
+      internalID: -749067376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_5
+      name: inkies sprites_5
       rect:
         serializedVersion: 2
-        x: 29
-        y: 248
-        width: 7
-        height: 12
+        x: 1024
+        y: 4
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7fb3c3feef50892c0800000000000000
-      internalID: -4424780041397978121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2_6
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 199
-        width: 12
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 00a9cf94164ed5a70800000000000000
-      internalID: 8817454751965551104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2_7
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 190
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e356e1949c1c92730800000000000000
-      internalID: 3974921216390489406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2_8
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 169
-        width: 10
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 552351f2840ef25f0800000000000000
-      internalID: -779157609879621035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2_9
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 10
-        width: 30
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ffcc9755ff3c95ea0800000000000000
-      internalID: -5883455936764719873
+      spriteID: 1053c1b7e151d0c44bd1359f42647970
+      internalID: 72616131
       vertices: []
       indices: 
       edges: []
@@ -350,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 441148b1e8badb84faa2211dc75a497e
     internalID: 0
     vertices: []
     indices: 
@@ -359,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      inkies sprites_0: -641662200
+      inkies sprites_1: -741832153
+      inkies sprites_2: 1623806544
+      inkies sprites_3: 447141839
+      inkies sprites_4: -749067376
+      inkies sprites_5: 72616131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
