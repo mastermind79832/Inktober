@@ -20,14 +20,25 @@ public class PlayerController : MonoBehaviour
 	public float atk2Time;
 	public float atk3Time;
 
+	public Transform Atk1Point;
+	public float atk1Radius;
+	public Transform Atk2Point;
+	public float atk2Radius;
+	public Transform Atk3Point;
+	public float atk3Radius;
+
 	public InventorySystem InventorySystem;
+
+	private float scaleSave;
 
 	private void Awake()
 	{
 		if (instance == null)
 			instance = this;
 		else
-			Destroy(this);	
+			Destroy(this);
+
+		scaleSave = transform.localScale.x;
 	}
 
 	private void Start()
@@ -88,11 +99,14 @@ public class PlayerController : MonoBehaviour
         {
 			if (m_Direction.x < 0)
 			{
-				spriteRenderer.flipX = true;
+				//transform.localScale;
+				//spriteRenderer.flipX = true;
+				transform.localScale = new Vector3 (-scaleSave, scaleSave, scaleSave);
 			}
 			else
 			{
-				spriteRenderer.flipX = false;
+				//spriteRenderer.flipX = false;
+				transform.localScale = new Vector3(scaleSave, scaleSave, scaleSave);
 			}
 
 			anim.SetBool("IsRunning", true);
@@ -110,5 +124,20 @@ public class PlayerController : MonoBehaviour
 		IsActionBlocked = true;
 		yield return new WaitForSeconds(amt);
 		IsActionBlocked = false;
+	}
+
+	private void Atk1()
+	{
+		//Physics2D.CircleCast(Atk1Point.position, atk1Radius, transform.forward);
+	}
+
+	private void Atk2()
+	{
+
+	}
+
+	private void Atk3()
+	{
+
 	}
 }
