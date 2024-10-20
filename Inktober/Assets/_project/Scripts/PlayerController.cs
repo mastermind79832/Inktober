@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 { 
 
 	private static PlayerController instance;
@@ -21,11 +21,8 @@ public class PlayerController : MonoBehaviour
 	public float atk3Time;
 
 	public Transform Atk1Point;
-	public float atk1Radius;
 	public Transform Atk2Point;
-	public float atk2Radius;
 	public Transform Atk3Point;
-	public float atk3Radius;
 
 	public InventorySystem InventorySystem;
 
@@ -126,18 +123,8 @@ public class PlayerController : MonoBehaviour
 		IsActionBlocked = false;
 	}
 
-	private void Atk1()
+	public void TakeDamage(int dmg)
 	{
-		//Physics2D.CircleCast(Atk1Point.position, atk1Radius, transform.forward);
-	}
-
-	private void Atk2()
-	{
-
-	}
-
-	private void Atk3()
-	{
-
+		throw new NotImplementedException();
 	}
 }

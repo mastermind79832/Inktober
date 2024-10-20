@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class Inkie : MonoBehaviour
+public class Inkie : MonoBehaviour, IDamageable
 {
 	[SerializeField] private Animator animator;
 
 	[Header("Properties")]
 	[SerializeField] private int maxHealth;
 	[SerializeField] private float moveSpeed;
+	[SerializeField] private float deathTime;
 
 	[Header("Atk")]
 	[SerializeField] private int damageAmount;
@@ -16,6 +18,7 @@ public class Inkie : MonoBehaviour
 
 	private int health;
 	private bool isAttacking;
+	private bool isDead;
 
 	private void Start()
 	{
@@ -23,20 +26,11 @@ public class Inkie : MonoBehaviour
 		isAttacking = false;
 	}
 
-	public void TakeDamage()
-	{
-		health--;
-
-		if (health <= 0)
-		{ 
-			Destroy(gameObject);
-		}
-	}
 
 	private void Update()
 	{
 		// don't do anything while attacking
-		if (isAttacking)
+		if (isAttacking || isDead)
 			return;
 
 		//transform.DOMove(PlayerController.Instance.transform.position, moveSpeed * Time.deltaTime);
@@ -60,5 +54,24 @@ public class Inkie : MonoBehaviour
 		isAttacking = true;
 		yield return new WaitForSeconds(AtkTime);
 		isAttacking = false;
+	}
+
+	public void TakeDamage(int dmg)
+	{
+
+		health-= dmg;
+
+		if (health <= 0)
+		{
+			StopAllCoroutines();
+			StartCoroutine(DeathRoutine());
+		}
+	}
+	private IEnumerator DeathRoutine()
+	{
+		isDead = true;
+		animator.SetTrigger("IsDead");
+		yield return new WaitForSeconds(deathTime);
+		Destroy(gameObject);
 	}
 }
