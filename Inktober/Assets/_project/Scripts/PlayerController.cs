@@ -2,129 +2,175 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable
-{ 
+namespace Ottamind.Inktober
+{
+	[SelectionBase]
+    public class PlayerController : MonoBehaviour
+    {
 
-	private static PlayerController instance;
-	public static PlayerController Instance { get { return instance; } }	
+		private static PlayerController instance;
+		public static PlayerController Instance { get { return instance; } }
 
-    private Vector2 m_Direction;
-	public Rigidbody2D Rigidbody2D;
-	public Animator anim;
-	public SpriteRenderer spriteRenderer;
+		public Rigidbody m_Rigidbody;
+		public Animator anim;
+		public SpriteRenderer spriteRenderer;
 
-	public float Speed;
-	public bool IsActionBlocked;
+		public float Speed;
+		public float RotationSpeed;
+		public float RotationThreashold;
+		public bool IsActionBlocked;
 
-	public float atk1Time;
-	public float atk2Time;
-	public float atk3Time;
+		public float atk1Time;
+		public float atk2Time;
+		public float atk3Time;
 
-	public Transform Atk1Point;
-	public Transform Atk2Point;
-	public Transform Atk3Point;
+		public Transform Atk1Point;
+		public Transform Atk2Point;
+		public Transform Atk3Point;
 
-	public InventorySystem InventorySystem;
+		public InventorySystem InventorySystem;
 
-	private float scaleSave;
+		private Vector3 m_Direction;
+		private Vector3 scaleSave;
 
-	private void Awake()
-	{
-		if (instance == null)
-			instance = this;
-		else
-			Destroy(this);
+		private float m_TargetRotation;
+		private bool m_IsRotating;
 
-		scaleSave = transform.localScale.x;
-	}
-
-	private void Start()
-	{
-		m_Direction = new Vector2();
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		Movement();
-		Attack();
-	}
-
-	private void Attack()
-	{
-		if (Input.GetKeyDown(KeyCode.K))
+		private void Awake()
 		{
-			anim.SetTrigger("Atk1");
-			BlockAction(atk1Time);
+			if (instance == null)
+				instance = this;
+			else
+				Destroy(this);
+
+			scaleSave = spriteRenderer.transform.localScale;
 		}
 
-		if (Input.GetKeyDown(KeyCode.L))
+		private void Start()
 		{
-			anim.SetTrigger("Atk2");
-			BlockAction(atk2Time);
+			m_Direction = new Vector2();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Semicolon))
+		// Update is called once per frame
+		void Update()
 		{
-			anim.SetTrigger("Atk3");
-			BlockAction(atk3Time);
+			ChangeDirection();
+			Movement();
+			Attack();
 		}
-	}
 
-	private void Movement()
-	{
-		if (!IsActionBlocked)
+		private void ChangeDirection()
 		{
-			m_Direction = Vector2.right * Input.GetAxis("Horizontal") + Vector2.up * Input.GetAxis("Vertical");
-		}
-		else
-		{
-			m_Direction = Vector2.zero;
-		}
-			Rigidbody2D.linearVelocity = m_Direction * Speed;
-
-		SetAnimation();
-	}
-
-	private void SetAnimation()
-	{
-		if (m_Direction == Vector2.zero)
-		{
-			anim.SetBool("IsRunning", false);
-		}
-        else
-        {
-			if (m_Direction.x < 0)
+			if (Input.GetKeyDown(KeyCode.Q))
 			{
-				//transform.localScale;
-				//spriteRenderer.flipX = true;
-				transform.localScale = new Vector3 (-scaleSave, scaleSave, scaleSave);
+				m_IsRotating = true;
+				m_TargetRotation -= 90;
+			}
+			else if (Input.GetKeyDown(KeyCode.E))
+			{
+				m_IsRotating = true;
+				m_TargetRotation += 90;
+			}
+
+			if (m_IsRotating)
+			{
+				transform.eulerAngles = new Vector3(0, Mathf.LerpAngle(transform.eulerAngles.y, m_TargetRotation, RotationSpeed *  Time.deltaTime), 0);
+
+				if (m_TargetRotation > 360)
+				{
+					m_TargetRotation -= 360;
+				}
+
+				if(m_TargetRotation < 0)
+				{
+					m_TargetRotation += 360;
+				}
+
+
+				if (Mathf.Abs( Mathf.DeltaAngle(transform.eulerAngles.y, m_TargetRotation)) <= RotationThreashold)
+				{
+					m_IsRotating = false;
+					transform.eulerAngles = new Vector3(0, m_TargetRotation, 0);
+				}
+			}
+		}
+
+		private void Attack()
+		{
+			if (Input.GetKeyDown(KeyCode.K))
+			{
+				anim.SetTrigger("Atk1");
+				BlockAction(atk1Time);
+			}
+
+			if (Input.GetKeyDown(KeyCode.L))
+			{
+				anim.SetTrigger("Atk2");
+				BlockAction(atk2Time);
+			}
+
+			if (Input.GetKeyDown(KeyCode.Semicolon))
+			{
+				anim.SetTrigger("Atk3");
+				BlockAction(atk3Time);
+			}
+		}
+
+		private void Movement()
+		{
+			if (!IsActionBlocked)
+			{
+				m_Direction = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 			}
 			else
 			{
-				//spriteRenderer.flipX = false;
-				transform.localScale = new Vector3(scaleSave, scaleSave, scaleSave);
+				m_Direction = Vector3.zero;
+			}
+			m_Rigidbody.linearVelocity = m_Direction * Speed;
+
+			SetAnimation();
+		}
+
+		private void SetAnimation()
+		{
+			if (m_Direction == Vector3.zero)
+			{
+				anim.SetBool("IsRunning", false);
+			}
+			else
+			{
+				if (Input.GetAxis("Horizontal") < 0)
+				{
+					//transform.localScale;
+					//spriteRenderer.flipX = true;
+					spriteRenderer.transform.localScale = new Vector3(-scaleSave.x, scaleSave.y, scaleSave.z);
+				}
+				else
+				{
+					//spriteRenderer.flipX = false;
+					spriteRenderer.transform.localScale = new Vector3(scaleSave.x, scaleSave.y, scaleSave.z);
+				}
+
+				anim.SetBool("IsRunning", true);
 			}
 
-			anim.SetBool("IsRunning", true);
 		}
-	
-    }
 
-	private void BlockAction(float amt)
-	{
-		StartCoroutine(BlockActionRoutine(amt));
-	}
+		private void BlockAction(float amt)
+		{
+			StartCoroutine(BlockActionRoutine(amt));
+		}
 
-	IEnumerator BlockActionRoutine(float amt)
-	{
-		IsActionBlocked = true;
-		yield return new WaitForSeconds(amt);
-		IsActionBlocked = false;
-	}
+		IEnumerator BlockActionRoutine(float amt)
+		{
+			IsActionBlocked = true;
+			yield return new WaitForSeconds(amt);
+			IsActionBlocked = false;
+		}
 
-	public void TakeDamage(int dmg)
-	{
-		throw new NotImplementedException();
+		public void TakeDamage(int dmg)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
