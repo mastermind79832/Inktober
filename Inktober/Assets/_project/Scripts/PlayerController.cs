@@ -61,12 +61,12 @@ namespace Ottamind.Inktober
 
 		private void ChangeDirection()
 		{
-			if (Input.GetKeyDown(KeyCode.Q))
+			if (Input.GetKeyDown(KeyCode.E))
 			{
 				m_IsRotating = true;
 				m_TargetRotation -= 90;
 			}
-			else if (Input.GetKeyDown(KeyCode.E))
+			else if (Input.GetKeyDown(KeyCode.Q))
 			{
 				m_IsRotating = true;
 				m_TargetRotation += 90;
@@ -126,7 +126,7 @@ namespace Ottamind.Inktober
 			{
 				m_Direction = Vector3.zero;
 			}
-			m_Rigidbody.linearVelocity = m_Direction * Speed;
+			m_Rigidbody.linearVelocity = (m_Direction * Speed) + (Physics.gravity);
 
 			SetAnimation();
 		}

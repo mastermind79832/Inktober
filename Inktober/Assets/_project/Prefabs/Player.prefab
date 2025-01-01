@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 67.67275
     OrthographicSize: 12
-    NearClipPlane: 0.3
+    NearClipPlane: -6.26
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -170,8 +170,8 @@ GameObject:
   - component: {fileID: 6959672295361140475}
   - component: {fileID: 3715469053769425398}
   - component: {fileID: 1077043688259319212}
-  - component: {fileID: 7132896592243344272}
   - component: {fileID: 3261061646606984923}
+  - component: {fileID: 6121265965488218892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -275,10 +275,36 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &7132896592243344272
-BoxCollider:
+--- !u!114 &3261061646606984923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659707705797437693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6188fd8a50fd744a9351f42c9aa363a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rigidbody: {fileID: 1077043688259319212}
+  anim: {fileID: 4632899298905678164}
+  spriteRenderer: {fileID: 9200469496125936463}
+  Speed: 25
+  RotationSpeed: 10
+  RotationThreashold: 0.3
+  IsActionBlocked: 0
+  atk1Time: 0.5
+  atk2Time: 1
+  atk3Time: 1
+  Atk1Point: {fileID: 0}
+  Atk2Point: {fileID: 0}
+  Atk3Point: {fileID: 0}
+  InventorySystem: {fileID: 0}
+--- !u!136 &6121265965488218892
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -295,35 +321,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 5, z: 1}
-  m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &3261061646606984923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4659707705797437693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6188fd8a50fd744a9351f42c9aa363a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Rigidbody: {fileID: 1077043688259319212}
-  anim: {fileID: 4632899298905678164}
-  spriteRenderer: {fileID: 9200469496125936463}
-  Speed: 10
-  RotationSpeed: 10
-  RotationThreashold: 0.3
-  IsActionBlocked: 0
-  atk1Time: 0.5
-  atk2Time: 1
-  atk3Time: 1
-  Atk1Point: {fileID: 0}
-  Atk2Point: {fileID: 0}
-  Atk3Point: {fileID: 0}
-  InventorySystem: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.77
+  m_Height: 4.33
+  m_Direction: 1
+  m_Center: {x: 0.15, y: 2.47, z: 0}
 --- !u!1 &4749670176377515204
 GameObject:
   m_ObjectHideFlags: 0
